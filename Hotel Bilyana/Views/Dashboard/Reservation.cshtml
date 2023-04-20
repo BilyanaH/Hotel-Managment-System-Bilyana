@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Hotel_Bilyana.Models.ReservationModel>
+
+@{
+    ViewData["Title"] = "Reservation";
+}
+
+<h1>Reservation</h1>
+
+<p>
+    <a asp-action="Reservation_Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfArrival)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfLeaving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsIncludedBreakfast)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AllInclusive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinalPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.FirstName)&nbsp;@Html.DisplayFor(modelItem => item.Client.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.Number)&nbsp;@Html.DisplayFor(modelItem => item.Room.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfArrival)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfLeaving)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsIncludedBreakfast)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AllInclusive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinalPrice)
+            </td>
+            <td>
+                <a asp-action="Reservation_Edit" asp-route-id="@item.ReservationId">Edit</a> |
+                <a asp-action="Reservation_Details" asp-route-id="@item.ReservationId">Details</a> |
+                <a asp-action="Reservation_Delete" asp-route-id="@item.ReservationId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

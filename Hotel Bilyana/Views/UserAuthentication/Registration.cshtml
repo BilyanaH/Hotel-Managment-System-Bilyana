@@ -1,0 +1,110 @@
+﻿@model Hotel_Bilyana.Models.DTO.RegistrationModel
+
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<h1>Registration</h1>
+
+
+@if (TempData["msg"] != null)
+{
+    <div class="form-group">
+        <span class="text-info">@TempData["msg"]</span>
+    </div>
+}
+<a class="btn btn-primary" asp-area="" asp-controller="UserAuthentication" asp-action="RegisterAdmin">Register Admin</a>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 center-block">
+            <form asp-controller="UserAuthentication" asp-action="Registration" method="post">
+                <div class="form-group">
+                    <label>FirstName</label>
+                    <input type="text" class="form-control" asp-for="FirstName"/>
+                    <span class="text-danger"  asp-validation-for="FirstName"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>MiddleName</label>
+                    <input type="text" class="form-control" asp-for="MiddleName" />
+                    <span class="text-danger" asp-validation-for="MiddleName"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>LastName</label>
+                    <input type="text" class="form-control" asp-for="LastName" />
+                    <span class="text-danger" asp-validation-for="LastName"></span>
+                </div>
+                 <div class="form-group">
+                    <label>UserName</label>
+                    <input type="text" class="form-control" asp-for="UserName" />
+                    <span class="text-danger" asp-validation-for="UserName"></span>
+                </div>
+                  <div class="form-group">
+                    <label>EGN</label>
+                    <input type="text" class="form-control" asp-for="EGN" />
+                    <span class="text-danger" asp-validation-for="EGN"></span>
+                </div>
+                <div class="form-group">
+                    <label>PhoneNumber</label>
+                    <input type="text" class="form-control" asp-for="PhoneNumber" />
+                    <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" asp-for="Email" />
+                    <span class="text-danger" asp-validation-for="Email"></span>
+
+                </div>
+               @if (User.IsInRole("admin"))
+                        {
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select class="form-control" asp-for="Role">
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        <span class="text-danger" asp-validation-for="Role"></span>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" asp-for="Role" value="user" />
+                        <span class="text-danger" asp-validation-for="Role"></span>
+                    </div>
+                }
+                <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" asp-for="Password" />
+                    <span class="text-danger" asp-validation-for="Password"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Password confirm</label>
+                    <input type="password" class="form-control" asp-for="PasswordConfirm" />
+                    <span class="text-danger" asp-validation-for="PasswordConfirm"></span>
+
+                </div>
+
+               
+                
+                @if (TempData["msg"] != null)
+                {
+                    <div class="form-group">
+                       <span class="text-info">@TempData["msg"]</span>
+                    </div>
+                }
+
+                <button type="submit"  asp-action="Registration">Registration</button>
+             </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@model Hotel_Bilyana.Models.ReservationModel
+
+@{
+    ViewData["Title"] = "Reservation_Details";
+}
+
+<h1>Reservation_Details</h1>
+
+<div>
+    <h4>ReservationModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Client.FirstName)&nbsp;@Html.DisplayFor(model => model.Client.Surname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Room)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Room.Number)&nbsp;@Html.DisplayFor(model => model.Room.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfArrival)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateOfArrival)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfLeaving)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateOfLeaving)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsIncludedBreakfast)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsIncludedBreakfast)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AllInclusive)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AllInclusive)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FinalPrice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FinalPrice)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Reservation_Edit" asp-route-id="@Model?.ReservationId">Edit</a> |
+    <a asp-action="Reservation">Back to List</a>
+</div>

@@ -1,0 +1,63 @@
+﻿@model Hotel_Bilyana.Models.DTO.RoomModel
+
+@{
+    ViewData["Title"] = "Room Create";
+}
+
+<h1>Create</h1>
+
+<h4>Room</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Room_Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Number" class="control-label"></label>
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Capacity" class="control-label"></label>
+                <input asp-for="Capacity" class="form-control" />
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+               <div class="form-group">
+    <label asp-for="Type" class="control-label"></label>
+    <select asp-for="Type" name="Type" class="form-control">
+                    @if (ViewBag.RoomTypes != null)
+                    {
+                        @foreach (var type in ViewBag.RoomTypes)
+                        {
+                            <option value="@type">@type</option>
+                        }
+                    }
+                </select>
+    <span asp-validation-for="Type" class="text-danger"></span>
+</div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsFree" /> @Html.DisplayNameFor(model => model.IsFree)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Room">Back to List</a>
+</div>
+

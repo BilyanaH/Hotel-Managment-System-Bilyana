@@ -1,0 +1,31 @@
+﻿@model Hotel_Bilyana.Models.DTO.LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<form asp-controller="UserAuthentication" asp-action="Login" method="post">
+  
+  <div class="container">
+    <label asp-for="UserName"><b>UserName</b></label>
+    <input type="text" asp-for="UserName" placeholder="Enter userName">
+            <div class="msg">
+            <span class="err" asp-validation-for="UserName"></span>
+            </div>
+
+            
+
+    <label asp-for="Password"><b>Password</b></label>
+   <input  type="password" asp-for="Password" placeholder="Enter Password">
+            <div class="msg">
+            <span asp-validation-for="Password" class="err"></span>
+            </div>
+
+
+    @if(TempData["msg"]!=null){
+                <div class="msg">@TempData["msg"]</div>
+    }
+
+    <button type="submit">Login</button>
+    <a class="text-alert"  asp-action="Registration">Not a user? Sign up</a>
+  </div>
+</form>
